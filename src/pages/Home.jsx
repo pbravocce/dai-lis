@@ -64,13 +64,6 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Backdrop Footer */}
-      <div className="absolute bottom-12 left-8 flex items-center gap-6 opacity-30">
-        <div className="utility-text text-[10px] rotate-90 origin-left translate-y-4">
-          Scroll para descubrir
-        </div>
-        <div className="w-[1px] h-20 bg-silver animate-scroll-line"></div>
-      </div>
     </div>
   );
 };
