@@ -78,7 +78,7 @@ const RegistrationForm = () => {
       <div className="pt-16 px-6 max-w-2xl mx-auto text-center animate-fade-in relative overflow-visible">
         {/* Approved Stamp Animation */}
         <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 animate-stamp">
-          <div className="border-8 border-red-600 text-red-600 text-6xl font-black uppercase px-8 py-3 rotate-[-15deg] opacity-80 mix-blend-multiply whitespace-nowrap">
+          <div className="border-4 md:border-8 border-red-600 text-red-600 text-4xl md:text-6xl font-black uppercase px-5 py-2 md:px-8 md:py-3 rotate-[-15deg] opacity-80 mix-blend-multiply whitespace-nowrap">
             APPROVED
           </div>
         </div>
