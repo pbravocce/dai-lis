@@ -7,4 +7,7 @@ export const CONTACT = {
   workshopKey: '8c71eff7-3882-4c11-b393-81aac813eaf5',
 };
 
+// Correo de contacto directo (botón "Enviar Correo" en Talleres).
+export const CONTACT_EMAIL = 'pb60code@gmail.com';
+
 export const isPlaceholderKey = (key) => !key || key.startsWith('REEMPLAZAR');

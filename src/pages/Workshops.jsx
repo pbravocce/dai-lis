@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { CONTACT_EMAIL } from '../config/contact';
 
 const WorkshopCard = ({ workshop }) => {
   return (
@@ -85,7 +86,7 @@ const Workshops = () => {
           Si necesitas una clase personalizada o tienes una propuesta de proyecto, contáctanos directamente.
         </p>
         <a
-          href="mailto:contacto@dairoylis.com"
+          href={`mailto:${CONTACT_EMAIL}`}
           className="relative z-10 inline-block px-12 py-5 bg-spot text-void utility-text font-bold hover:bg-silver transition-all duration-500"
         >
           Enviar Correo
