@@ -63,7 +63,7 @@ const Dairo = () => {
             <p className="utility-text text-silver opacity-60 relative z-20 ml-4">Director de Cine • Dramaturgo • Docente</p>
           </div>
 
-          <div className="md:col-span-7 space-y-8 md:mt-20">
+          <div className="md:col-span-7 space-y-8 md:mt-10">
             <div className="space-y-6 text-xl leading-relaxed font-light text-paper/80 border-l border-white/10 pl-8">
               <p>
                 Explorador visual y narrador de historias, Dairo se ha dedicado a la creación de espacios escénicos y cinematográficos que desafían la percepción del espectador. Su trabajo se centra en la intersección entre el drama humano y la experimentación formal.

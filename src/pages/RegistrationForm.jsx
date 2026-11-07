@@ -111,7 +111,7 @@ const RegistrationForm = () => {
       <div className="mb-24 text-center">
         <h2 className="text-5xl font-bold uppercase italic tracking-tighter mb-4">Solicitud de Casting</h2>
         <p className="text-sm font-bold uppercase tracking-widest mb-2">
-          Taller: {workshops[workshopId] || 'TALLER SELECCIONADO'}
+          {workshopId ? `Taller: ${workshops[workshopId]}` : 'Casting Lis Bravo'}
         </p>
       </div>
 

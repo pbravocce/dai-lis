@@ -63,7 +63,7 @@ const Lis = () => {
             <p className="utility-text text-silver opacity-60 relative z-20 ml-4">Actriz • Modelo • Artista</p>
           </div>
 
-          <div className="md:col-span-7 space-y-8 md:mt-20">
+          <div className="md:col-span-7 space-y-8 md:mt-10">
             <div className="space-y-6 text-xl leading-relaxed font-light text-paper/80 border-l border-white/10 pl-8">
               <p>
                 Con una presencia versátil y una capacidad innata para la transformación, Lis ha recorrido los escenarios y las pasarelas integrando la disciplina del modelaje con la profundidad de la actuación.
