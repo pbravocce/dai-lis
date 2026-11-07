@@ -11,42 +11,58 @@ const Navbar = () => {
     { name: 'Workshops', path: '/workshops' },
   ];
 
-  return (
-    <nav className="fixed top-0 w-full z-50 px-8 py-6 flex justify-between items-start pointer-events-none bg-void/80 backdrop-blur-sm border-b border-haze/30">
-      <div className="pointer-events-auto">
+  const linksRow = (className) => (
+    <div className={className}>
+      {navLinks.map((link) => (
         <Link
-          to="/"
-          className="display-text text-2xl tracking-tight uppercase italic hover:opacity-70 transition-opacity block"
+          key={link.path}
+          to={link.path}
+          className={`whitespace-nowrap transition-all duration-500 hover:text-white ${
+            location.pathname === link.path ? 'text-white font-bold' : 'text-white/40'
+          }`}
         >
-          Dairo <span className="text-silver">&</span> Lis
+          {link.name}
         </Link>
-        <div className="utility-text mt-2 opacity-50">
-          Cinema / Theater / Art
+      ))}
+    </div>
+  );
+
+  const castingButton = (
+    <Link
+      to="/workshops/register"
+      className="glass-panel whitespace-nowrap px-3 py-2 md:px-4 font-mono text-[9px] md:text-[10px] uppercase tracking-widest text-white hover:bg-white hover:text-void transition-all duration-300 text-center"
+    >
+      Solicitud de Casting
+    </Link>
+  );
+
+  return (
+    <nav className="fixed top-0 w-full z-50 px-4 py-4 md:px-8 md:py-6 pointer-events-none bg-void/80 backdrop-blur-sm border-b border-haze/30">
+      <div className="flex items-start justify-between gap-3">
+        <div className="pointer-events-auto min-w-0">
+          <Link
+            to="/"
+            className="display-text text-xl md:text-2xl tracking-tight uppercase italic hover:opacity-70 transition-opacity block whitespace-nowrap"
+          >
+            Dairo <span className="text-silver">&</span> Lis
+          </Link>
+          <div className="hidden md:block utility-text mt-2 opacity-50">
+            Cinema / Theater / Art
+          </div>
         </div>
+
+        {/* Escritorio: enlaces y botón apilados a la derecha */}
+        <div className="hidden md:flex pointer-events-auto flex-col items-end gap-4">
+          {linksRow('utility-text flex items-center gap-5')}
+          {castingButton}
+        </div>
+
+        {/* Móvil: solo el botón en la fila superior */}
+        <div className="md:hidden pointer-events-auto">{castingButton}</div>
       </div>
 
-      <div className="pointer-events-auto flex flex-col items-end gap-4">
-        <div className="flex items-center justify-end utility-text" style={{ display: 'flex', gap: '20px' }}>
-          {navLinks.map((link) => (
-            <Link
-              key={link.path}
-              to={link.path}
-              className={`transition-all duration-500 hover:text-white ${
-                location.pathname === link.path ? 'text-white font-bold' : 'text-white/40'
-              }`}
-              style={{ marginRight: '20px' }}
-            >
-              {link.name}
-            </Link>
-          ))}
-        </div>
-        <Link
-          to="/workshops/register"
-          className="glass-panel px-4 py-2 utility-text text-white hover:bg-white hover:text-void transition-all duration-300 text-center"
-        >
-          Solicitud de Casting
-        </Link>
-      </div>
+      {/* Móvil: enlaces en una fila debajo */}
+      {linksRow('md:hidden pointer-events-auto utility-text flex justify-between mt-3')}
     </nav>
   );
 };

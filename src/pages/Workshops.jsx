@@ -59,7 +59,7 @@ const Workshops = () => {
   ];
 
   return (
-    <div className="pt-32 px-8 max-w-6xl mx-auto pb-32 animate-curtain-open">
+    <div className="px-8 max-w-6xl mx-auto pb-32 animate-curtain-open">
       <div className="mb-32 flex flex-col md:flex-row md:justify-between md:items-end gap-8">
         <div className="max-w-2xl">
           <h1 className="display-text text-7xl md:text-9xl tracking-tighter spotlight-text mb-8">Talleres</h1>

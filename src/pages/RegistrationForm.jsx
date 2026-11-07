@@ -75,7 +75,7 @@ const RegistrationForm = () => {
     const isLisCasting = !workshopId;
 
     return (
-      <div className="pt-48 px-6 max-w-2xl mx-auto text-center animate-fade-in relative overflow-visible">
+      <div className="pt-16 px-6 max-w-2xl mx-auto text-center animate-fade-in relative overflow-visible">
         {/* Approved Stamp Animation */}
         <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 animate-stamp">
           <div className="border-8 border-red-600 text-red-600 text-6xl font-black uppercase px-8 py-3 rotate-[-15deg] opacity-80 mix-blend-multiply whitespace-nowrap">
@@ -107,7 +107,7 @@ const RegistrationForm = () => {
   }
 
   return (
-    <div className="pt-32 px-6 max-w-3xl mx-auto pb-32 animate-fade-in">
+    <div className="px-6 max-w-3xl mx-auto pb-32 animate-fade-in">
       <div className="mb-24 text-center">
         <h2 className="text-5xl font-bold uppercase italic tracking-tighter mb-4">Solicitud de Casting</h2>
         <p className="text-sm font-bold uppercase tracking-widest mb-2">

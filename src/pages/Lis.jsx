@@ -1,5 +1,4 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
 import lisProfile from '../assets/lis/profile.jpg';
 import lisPortfolio1 from '../assets/lis/portfolio1.jpg';
 import lisPortfolio2 from '../assets/lis/portfolio2.jpg';
@@ -9,6 +8,21 @@ import lisPortfolio5 from '../assets/lis/portfolio5.jpg';
 import lisPortfolio6 from '../assets/lis/portfolio6.jpg';
 
 const ProjectCard = ({ item, index }) => {
+  const ref = useRef(null);
+  const [active, setActive] = useState(false);
+
+  // En móvil no hay hover: la tarjeta se activa (color) cuando está en el centro de la pantalla
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return undefined;
+    const observer = new IntersectionObserver(
+      ([entry]) => setActive(entry.isIntersecting),
+      { rootMargin: '-35% 0px -35% 0px' }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   const variants = [
     "md:col-span-7 mt-0",
     "md:col-span-5 mt-20",
@@ -17,18 +31,39 @@ const ProjectCard = ({ item, index }) => {
   const variant = variants[index % variants.length];
 
   return (
-    <div className={`relative group aspect-[3/4] overflow-hidden bg-velvet cursor-pointer animate-curtain-open ${variant}`}>
+    <div
+      ref={ref}
+      className={`relative group aspect-[3/4] overflow-hidden bg-velvet cursor-pointer animate-curtain-open ${variant}`}
+    >
       <img
         src={item.image}
         alt={item.title}
-        className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000 ease-in-out opacity-60 group-hover:opacity-100"
+        className={`w-full h-full object-cover transition-all duration-1000 ease-in-out group-hover:grayscale-0 group-hover:scale-105 group-hover:opacity-100 ${
+          active ? 'grayscale-0 scale-105 opacity-100' : 'grayscale opacity-60'
+        }`}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-void via-transparent to-transparent opacity-80 group-hover:opacity-40 transition-opacity duration-500"></div>
-      <div className="absolute bottom-0 left-0 p-8 w-full translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-        <span className="utility-text text-silver mb-2 block opacity-0 group-hover:opacity-100 transition-opacity delay-100">
+      <div
+        className={`absolute inset-0 bg-gradient-to-t from-void via-transparent to-transparent transition-opacity duration-500 group-hover:opacity-40 ${
+          active ? 'opacity-40' : 'opacity-80'
+        }`}
+      ></div>
+      <div
+        className={`absolute bottom-0 left-0 p-8 w-full transition-transform duration-500 group-hover:translate-y-0 ${
+          active ? 'translate-y-0' : 'translate-y-4'
+        }`}
+      >
+        <span
+          className={`utility-text text-silver mb-2 block transition-opacity delay-100 group-hover:opacity-100 ${
+            active ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
           {item.category}
         </span>
-        <h3 className="display-text text-2xl text-spot group-hover:text-paper transition-colors duration-500">
+        <h3
+          className={`display-text text-2xl transition-colors duration-500 group-hover:text-paper ${
+            active ? 'text-paper' : 'text-spot'
+          }`}
+        >
           {item.title}
         </h3>
       </div>
@@ -47,7 +82,7 @@ const Lis = () => {
   ];
 
   return (
-    <div className="pt-32 px-8 pb-20 animate-curtain-open relative">
+    <div className="px-8 pb-20 animate-curtain-open relative">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-16 mb-32 items-start">
           <div className="md:col-span-5 relative">
