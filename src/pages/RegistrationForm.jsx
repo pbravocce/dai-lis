@@ -8,6 +8,8 @@ const RegistrationForm = () => {
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
+  const [pagoRealizado, setPagoRealizado] = useState(false);
+  const [referencia, setReferencia] = useState('');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -26,6 +28,12 @@ const RegistrationForm = () => {
     const isLis = !workshopId;
     const accessKey = isLis ? CONTACT.castingKey : CONTACT.workshopKey;
     const tallerNombre = isLis ? 'Casting Lis Bravo' : workshops[workshopId];
+    const pagoInfo = !isLis && pagoRealizado;
+
+    if (pagoInfo && !/^\d{6}$/.test(referencia.trim())) {
+      setErrorMsg('Ingresa los últimos 6 dígitos de la referencia del pago.');
+      return;
+    }
 
     setSending(true);
     setErrorMsg('');
@@ -46,6 +54,8 @@ const RegistrationForm = () => {
           telefono: formData.phone,
           taller: tallerNombre,
           notas: formData.message || '(sin notas)',
+          pago_realizado: pagoInfo ? 'Sí' : 'No',
+          referencia_pago: pagoInfo ? referencia.trim() : '(no aplica)',
         }),
       });
       const data = await res.json();
@@ -162,6 +172,41 @@ const RegistrationForm = () => {
               onChange={(e) => setFormData({...formData, message: e.target.value})}
             ></textarea>
           </div>
+
+          {!workshopId ? null : (
+            <div className="flex flex-col gap-4">
+              <label className="flex items-center gap-3 cursor-pointer text-[10px] font-mono uppercase tracking-widest font-bold">
+                <input
+                  type="checkbox"
+                  checked={pagoRealizado}
+                  onChange={(e) => {
+                    setPagoRealizado(e.target.checked);
+                    if (!e.target.checked) setReferencia('');
+                  }}
+                  className="w-4 h-4 accent-white"
+                />
+                Ya realicé el pago del taller
+              </label>
+
+              {pagoRealizado && (
+                <div className="flex flex-col gap-2 group">
+                  <label className="text-[9px] font-mono uppercase tracking-widest font-bold opacity-60 group-focus-within:opacity-100 transition-opacity">
+                    Últimos 6 dígitos de la referencia
+                  </label>
+                  <input
+                    type="text"
+                    inputMode="numeric"
+                    maxLength={6}
+                    pattern="\d{6}"
+                    required
+                    value={referencia}
+                    onChange={(e) => setReferencia(e.target.value.replace(/\D/g, ''))}
+                    className="bg-transparent border-b border-white/10 py-3 focus:outline-none focus:border-white transition-all duration-500 font-mono text-sm font-bold"
+                  />
+                </div>
+              )}
+            </div>
+          )}
 
           {errorMsg && (
             <p className="text-sm font-bold text-red-500 text-center">{errorMsg}</p>
