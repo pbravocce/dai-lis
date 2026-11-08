@@ -16,6 +16,8 @@ const ProjectCard = ({ item, index }) => {
   useEffect(() => {
     const el = ref.current;
     if (!el) return undefined;
+    // Con mouse (PC) solo aplica el hover; el scroll activa el color únicamente en pantallas táctiles
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) return undefined;
     const observer = new IntersectionObserver(
       ([entry]) => setActive(entry.isIntersecting),
       { rootMargin: '-35% 0px -35% 0px' }
