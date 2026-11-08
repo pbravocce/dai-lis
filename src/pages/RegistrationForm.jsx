@@ -77,8 +77,8 @@ const RegistrationForm = () => {
     return (
       <>
       {/* Approved Stamp Animation: fuera del contenedor animado y centrado en toda la pantalla */}
-      <div className="fixed inset-0 z-20 flex items-center justify-center pointer-events-none animate-stamp">
-        <div className="border-4 md:border-8 border-red-600 text-red-600 text-3xl md:text-6xl font-black uppercase px-4 py-2 md:px-8 md:py-3 rotate-[-15deg] opacity-80 mix-blend-multiply whitespace-nowrap">
+      <div className="fixed inset-0 z-20 flex items-center justify-center pointer-events-none">
+        <div className="animate-stamp border-4 md:border-8 border-red-600 text-red-600 text-3xl md:text-6xl font-black uppercase px-4 py-2 md:px-8 md:py-3 rotate-[-15deg] opacity-80 mix-blend-multiply whitespace-nowrap">
           APPROVED
         </div>
       </div>
