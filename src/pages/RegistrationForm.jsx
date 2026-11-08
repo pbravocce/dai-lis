@@ -75,14 +75,13 @@ const RegistrationForm = () => {
     const isLisCasting = !workshopId;
 
     return (
-      <>
-      {/* Approved Stamp Animation: fuera del contenedor animado y centrado en toda la pantalla */}
-      <div className="fixed inset-0 z-20 flex items-center justify-center pointer-events-none">
-        <div className="animate-stamp border-4 md:border-8 border-red-600 text-red-600 text-3xl md:text-6xl font-black uppercase px-4 py-2 md:px-8 md:py-3 rotate-[-15deg] opacity-80 whitespace-nowrap">
-          APPROVED
-        </div>
-      </div>
       <div className="pt-16 px-6 max-w-2xl mx-auto text-center animate-fade-in relative overflow-visible">
+        {/* Approved Stamp Animation: centrado sobre la tarjeta de confirmación */}
+        <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
+          <div className="animate-stamp border-4 md:border-8 border-red-600 text-red-600 text-3xl md:text-6xl font-black uppercase px-4 py-2 md:px-8 md:py-3 rotate-[-15deg] opacity-80 whitespace-nowrap">
+            APPROVED
+          </div>
+        </div>
 
         <h2 className="text-5xl font-bold uppercase italic mb-8 tracking-tighter relative z-10">¡Inscripción Exitosa!</h2>
         <p className="text-sm opacity-50 mb-16 leading-relaxed tracking-wide relative z-10">
@@ -104,7 +103,6 @@ const RegistrationForm = () => {
           Volver a Talleres
         </Link>
       </div>
-      </>
     );
   }
 
